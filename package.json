@@ -1,6 +1,6 @@
 {
   "name": "angular-hello",
-  "version": "0.0.1-alpha001",
+  "version": "2.0.0-beta0001",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +9,8 @@
     "test:prod": "ng test --codeCoverage=true --progress=true --watch=false --browsers ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "clean": "rimraf ./coverage ./dist"
+    "clean": "rimraf ./coverage ./dist",
+    "version": "npm version "
   },
   "private": true,
   "dependencies": {
