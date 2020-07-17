@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "clean": "rimraf ./coverage ./dist",
-    "version": "npm version "
+    "version": "npm version ",
+    "pack":"npm pack"
   },
   "private": true,
   "dependencies": {
