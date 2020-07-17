@@ -51,9 +51,18 @@ Task("Test")
         NpmRunScript(settings);
     });
 
+Task("E2E-Test")
+    .IsDependentOn("Test")
+    .Does(() => {
+        var settings = new NpmRunScriptSettings {
+            ScriptName = "e2e"
+        };
+        NpmRunScript(settings);
+    });
+
 //https://cakebuild.net/api/Cake.Common.Tools.GitVersion/GitVersionAliases/4B9950AF
 Task("UpdateVersionInfo")
-    .IsDependentOn("Test")
+    .IsDependentOn("E2E-Test")
     .Does(() =>
         {
             var result = GitVersion(new GitVersionSettings {});
