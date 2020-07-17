@@ -53,6 +53,7 @@ Task("Test")
 
 //https://cakebuild.net/api/Cake.Common.Tools.GitVersion/GitVersionAliases/4B9950AF
 Task("UpdateVersionInfo")
+    .IsDependentOn("Test")
     .Does(() =>
         {
             var result = GitVersion(new GitVersionSettings {});
