@@ -1,0 +1,10 @@
+mode: ContinuousDeployment
+branches:
+  develop:
+    mode: ContinuousDeployment
+    tag: ''
+  master:
+    mode: ContinuousDeployment
+ignore:
+  sha: []
+merge-message-formats: {}
