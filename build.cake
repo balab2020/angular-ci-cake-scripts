@@ -1,5 +1,6 @@
 #addin "Cake.Npm"
 #tool "nuget:?package=GitVersion.CommandLine"
+#addin nuget:?package=Cake.Git
 
 var target = Argument("target", "Default");
 var prod = Argument("prod", "true");
@@ -63,8 +64,7 @@ Task("E2E-Test")
 //https://cakebuild.net/api/Cake.Common.Tools.GitVersion/GitVersionAliases/4B9950AF
 Task("UpdateVersionInfo")
     .IsDependentOn("E2E-Test")
-    .Does(() =>
-        {
+    .Does(() => {
             var result = GitVersion(new GitVersionSettings {});
             var semver = result.NuGetVersionV2;
             Information(logAction=>logAction("SemVer : " + semver));
@@ -77,12 +77,23 @@ Task("UpdateVersionInfo")
 Task("NpmPack")
     .IsDependentOn("UpdateVersionInfo")
     .Does(() => {
-            var packSettings = new NpmRunScriptSettings {
-                ScriptName = "pack"
-            };
-            packSettings.WithArguments("--allow-same-version");
-            NpmRunScript(packSettings);
+        var packSettings = new NpmRunScriptSettings {
+            ScriptName = "pack"
+        };
+        packSettings.WithArguments("--allow-same-version");
+        NpmRunScript(packSettings);
     });
+
+Task("GitRemotePush") 
+    .IsDependentOn("NpmPack")
+    .Does(() => {
+        var result = GitVersion(new GitVersionSettings {});
+        var semver = result.NuGetVersionV2;
+        GitAddAll(".");
+        GitCommit(".", "ci-bot", "balamuruganb2020@gmail.com", $"commit from build with version {semver} by ci");
+        GitPush(".");
+    });
+
 Task("Default")
     .IsDependentOn("NpmPack");
 
