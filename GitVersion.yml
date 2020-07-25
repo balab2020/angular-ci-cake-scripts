@@ -16,7 +16,7 @@ branches:
     tracks-release-branches: false
     is-release-branch: false
   release:
-    regex: vNext
+    regex: release/
     source-branches: ['master']
     increment: Patch
     prevent-increment-of-merged-branch-version: true
