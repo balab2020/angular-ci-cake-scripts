@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppComponent should match snapshot 1`] = `
+<div
+  id="root1"
+  ng-version="10.0.4"
+>
+  <h1>
+    Hello World
+  </h1>
+  <app-heoow-jest>
+    <p>
+      Testing Jest framework easy your life !!!!!!!!!
+    </p>
+  </app-heoow-jest>
+  <div
+    class="content"
+  >
+    <span>
+      angular-hello app is running!
+    </span>
+  </div>
+</div>
+`;

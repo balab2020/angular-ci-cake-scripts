@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeoowJestComponent } from './heoow-jest/heoow-jest.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeoowJestComponent
   ],
   imports: [
     BrowserModule,
