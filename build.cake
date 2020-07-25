@@ -7,9 +7,9 @@ var isProduction = prod == "true";
 
 Task("NpmCI")
     .Does(() => {
-            var settings = new NpmCiSettings();
-            settings.LogLevel = NpmLogLevel.Error;
-            NpmCi(settings);
+        var settings = new NpmCiSettings();
+        settings.LogLevel = NpmLogLevel.Error;
+        NpmCi(settings);
     });
 
 Task("Clean")
@@ -46,7 +46,7 @@ Task("Test")
             ScriptName = "test"
         };
         if(isProduction){
-            settings.WithArguments("--codeCoverage=true --progress=true --watch=false --browsers ChromeHeadless");
+            settings.WithArguments("--ci --coverage=true");
         }
         NpmRunScript(settings);
     });

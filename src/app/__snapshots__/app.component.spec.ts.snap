@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppComponent should match snapshot 1`] = `
+<span
+  _ngcontent-a-c3=""
+>
+  angular-hello app is running!
+</span>
+`;
